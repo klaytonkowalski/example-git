@@ -89,6 +89,12 @@ git commit
 git commit -m "<message>"
 ```
 
+Modify the most recent commit. Only use this method for local commits that have not yet been pushed.
+
+```
+git commit --amend
+```
+
 Delete a tracked file, or untrack a file in the staging area.
 
 ```
@@ -125,3 +131,130 @@ git log --oneline
 
 ...
 ```
+
+Unstage a file.
+
+```
+// Old method.
+git reset HEAD <file>
+
+// New method.
+git restore --staged <file>
+```
+
+Revert a file to its previous commit. Note that all changes not commited will be lost.
+
+```
+// Old method.
+git checkout -- <file>
+
+// New method.
+git restore --staged <file>
+```
+
+View remote servers for this repository.
+
+```
+// Name only.
+git remote
+
+// Names and URLs of all remotes.
+git remote -v
+
+// Names, URLs, branches, etc.
+git remote show <remote>
+```
+
+Add a remote and assign a name to it.
+
+```
+git remote add <remote> <url>
+```
+
+Fetch all data from a remote.
+
+```
+git fetch <remote>
+```
+
+Push commits from a local branch to a remote branch.
+
+```
+git push <remote> <branch>
+```
+
+Rename a remote.
+
+```
+git remote rename <remote> <new_remote>
+```
+
+Remove a remote.
+
+```
+git remote remove <remote>
+git remote rm <remote>
+```
+
+View tags for this repository.
+
+```
+// All tags.
+git tag
+
+// Filtered tags.
+git tag -l "<tag>"
+git tag --list "<tag>"
+```
+
+Create an annotated or lightweight tag. Annotated tags record a name, metadata, and description. Lightweight tags do not record any data except a searchable name.
+
+```
+// Annotated tag.
+git tag -a <tag> -m "<message>"
+
+// Lightweight tag.
+git tag <tag>
+
+// Tag an old commit.
+git tag -a <tag> -m "<message>" <commit>
+```
+
+Push local tags to a remote.
+
+```
+// Push a particular tag.
+git push <remote> <tag>
+
+// Push all tags.
+git push <remote> --tags
+
+// Push only annotated tags.
+git push <remote> --follow-tags
+```
+
+Delete a tag.
+
+```
+// Delete locally.
+git tag -d <tag>
+
+// Delete remotely.
+git push <remote> --delete <tag>
+```
+
+Checkout a tag. Note that the working directory will become detached and a new branch must be created to save changes.
+
+```
+git checkout <tag>
+```
+
+Create an alias for custom Git command.
+
+```
+git config --global alias.<custom_command> "<existing_command>"
+```
+
+## Branching
+
+todo...
