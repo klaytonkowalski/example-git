@@ -129,6 +129,12 @@ git log --stat
 // ...including one line per commit.
 git log --oneline
 
+// Target a specific branch.
+git log <branch>
+
+// Target all branches.
+git log --all
+
 ...
 ```
 
@@ -204,7 +210,6 @@ git tag
 
 // Filtered tags.
 git tag -l "<tag>"
-git tag --list "<tag>"
 ```
 
 Create an annotated or lightweight tag. Annotated tags record a name, metadata, and description. Lightweight tags do not record any data except a searchable name.
@@ -252,9 +257,69 @@ git checkout <tag>
 Create an alias for custom Git command.
 
 ```
-git config --global alias.<custom_command> "<existing_command>"
+git config --global alias.<custom_command> "<command>"
 ```
 
 ## Branching
 
-todo...
+Create a new branch.
+
+```
+git branch <branch>
+```
+
+Checkout a branch.
+
+```
+// Move HEAD to a branch.
+git checkout <branch>
+git switch <branch>
+
+// ...also create a branch.
+git checkout -b <branch>
+git switch -c <branch>
+
+// Revert to the previous branch.
+git switch -
+```
+
+Merge branches. The current branch pulls in changes from the targetted branch.
+
+```
+git merge <branch>
+```
+
+Delete a branch.
+
+```
+// On the local machine.
+git branch -d <branch>
+
+// On the server.
+git push <remote> --delete <branch>
+```
+
+View branches.
+
+```
+// All branches.
+git branch
+
+// Branches that have been merged with the current branch.
+git branch --merged
+
+// Branches that have not been merged with the current branch.
+git branch --no-merged
+```
+
+Rename a branch.
+
+```
+// On the local machine.
+git branch --move <old_branch> <new_branch>
+
+// On the server.
+git push --set-upstream <remote> <new_branch>
+```
+
+add rebase info...
