@@ -92,7 +92,11 @@ git commit -m "<message>"
 Modify the most recent commit. Only use this method for local commits that have not yet been pushed.
 
 ```
+// Amend files and message.
 git commit --amend
+
+// Only amend files.
+git commit --amend --no-edit
 ```
 
 Delete a tracked file, or untrack a file in the staging area.
@@ -322,4 +326,61 @@ git branch --move <old_branch> <new_branch>
 git push --set-upstream <remote> <new_branch>
 ```
 
-add rebase info...
+View the stash stack.
+
+```
+git stash list
+```
+
+Stash the current working directory.
+
+```
+// Tracked files.
+git stash
+git stash push
+
+// Tracked and untracked files.
+git stash --all
+```
+
+Load a stashed working directory. Note that applying a stash does not restore the staging area unless a special option is used, nor does it drop the stash from the stack.
+
+```
+// Top of the stack.
+git stash apply
+
+// Specific entry in the stack.
+git stash apply stash@{<entry>}
+
+// ...including the staging area.
+git stash apply --index
+```
+
+Drop a stash from the stack.
+
+```
+// Apply then drop.
+git stash pop
+
+// Only drop.
+git stash drop stash@{<entry>}
+```
+
+## Miscellaneous
+
+Delete all files in this repository that are untracked. Note that files referred to by `.gitignore` are not deleted by default.
+
+```
+// Force delete all files.
+git clean
+
+// Force delete all files and subdirectories that become empty.
+git clean -f -d
+
+// View potential deleted files or directories.
+git clean -d --dry-run
+git clean -d -n
+
+// ...include files referred to by .gitignore.
+git clean -x
+```
