@@ -4,7 +4,7 @@ Example of Git version control system commands.
 
 Please click the "Star" button on GitHub if you find this asset to be useful!
 
-## Configuration
+# Commands
 
 View the manpage for a command.
 
@@ -31,8 +31,6 @@ git config user.email
 git config --list --show-origin
 ```
 
-## Basics
-
 Declare an existing directory as a Git repository. A `.git` directory will be created containing repository metadata.
 
 ```
@@ -47,6 +45,9 @@ git clone https://github.com/<user>/<repository>
 
 // Clone with a custom name.
 git clone https://github.com/<user>/<repository> <custom_name>
+
+// Clone a repository and automatically initialize and update its submodules.
+git clone --recurse-submodules
 ```
 
 View the current state of files in this repository. States include untracked, unmodified, modified, and staged.
@@ -264,8 +265,6 @@ Create an alias for custom Git command.
 git config --global alias.<custom_command> "<command>"
 ```
 
-## Branching
-
 Create a new branch.
 
 ```
@@ -366,8 +365,6 @@ git stash pop
 git stash drop stash@{<entry>}
 ```
 
-## Miscellaneous
-
 Delete all files in this repository that are untracked. Note that files referred to by `.gitignore` are not deleted by default.
 
 ```
@@ -383,4 +380,28 @@ git clean -d -n
 
 // ...include files referred to by .gitignore.
 git clean -x
+```
+
+Add a submodule.
+
+```
+// Add new submodule metadata to an existing repository.
+git submodule add <submodule>
+
+// Clone a repository and automatically initialize and update its submodules.
+git clone --recurse-submodules
+```
+
+Initialize and update submodules.
+
+```
+// One submodule at a time.
+git submodule init
+git submodule update
+
+// All submodules simultaneously.
+git submodule update --init --recursive
+
+// Do not initialize.
+git submodule update --remote <submodule>
 ```
